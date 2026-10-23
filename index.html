@@ -205,6 +205,7 @@ a{color:inherit}
   width:100%;
   height:auto;
 }
+.project .media.small{max-width:380px}
 .project .media.pair{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -529,11 +530,11 @@ a{color:inherit}
           A 6U ten-inch server rack designed from scratch in Blender and printed
           on a Bambu X2D. It's built around two pairs of Gator Rackworks
           heavy-duty steel rails, so every module lands on real 10-32 rack
-          threads rather than printed ones. Each 1U module is independent — base
-          and top frame with slot grille, a dual mount carrying a Raspberry Pi 5
-          and 4B side by side, switch shelf, PDU, 12-port patch panel, fan rack,
-          and blanks — so the layout can be rearranged or reprinted a piece at a
-          time.
+          threads rather than printed ones. Every 1U module is independent:
+          base and top frame with slot grille, a dual mount carrying a Raspberry
+          Pi 5 and 4B side by side, switch shelf, PDU, 12-port patch panel, fan
+          rack, and blanks. The layout can be rearranged or reprinted a piece at
+          a time.
         </p>
         <p style="margin-top:16px">
           Most of the real work was in the constraints. The side panels are two
@@ -580,9 +581,9 @@ a{color:inherit}
           local recursive resolver so lookups resolve from the root servers
           instead of going out to a third-party upstream. Tailscale provides
           access from outside the LAN, which matters here because the unit is on
-          GPON fiber with no gateway admin access — no port forwarding and no
-          DHCP reservations available from the router side, so every piece has to
-          work without them.
+          GPON fiber with no gateway admin access. No port forwarding and no
+          DHCP reservations are available from the router side, so every piece
+          has to work without them.
         </p>
         <p style="margin-top:16px">
           A small Flask service exposes live host metrics over the LAN, managed
@@ -660,10 +661,10 @@ a{color:inherit}
         <span class="idx">05</span>
         <h3>Parametric Printed Enclosures</h3>
         <p>
-          Custom cases and mechanical parts designed for FDM printing — snap-fit
-          assemblies, sliding dovetail joints, and grille panels with clearances
-          tuned for how the plastic actually prints on a Bambu X2D, not just how
-          it looks in CAD. Modeled in Blender and FreeCAD, with a repeatable
+          Custom cases and mechanical parts designed for FDM printing:
+          snap-fit assemblies, sliding dovetail joints, and grille panels with
+          clearances tuned for how the plastic actually prints on a Bambu X2D,
+          not just how it looks in CAD. Modeled in Blender and FreeCAD, with a repeatable
           export workflow and material choices matched to the part (PLA for
           structure, PETG where it needs to flex).
         </p>
@@ -678,6 +679,55 @@ a{color:inherit}
           <div class="row"><dt>Domain</dt><dd>CAD · design for manufacturing</dd></div>
           <div class="row"><dt>Focus</dt><dd>Tolerance &amp; fit for FDM</dd></div>
           <div class="row"><dt>Status</dt><dd class="status">● Ongoing</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- Project 6 -->
+    <article class="project">
+      <div>
+        <span class="idx">06</span>
+        <h3>BMW N55 Diagnostics &amp; Repair</h3>
+        <figure class="media small">
+          <img src="assets/car_e90.jpg" width="800" height="533"
+               alt="Silver BMW E90 sedan on coilovers with aftermarket wheels and a front mount intercooler"
+               loading="lazy" decoding="async">
+          <figcaption>The E90. All of it diagnosed and repaired in my own garage.</figcaption>
+        </figure>
+        <p>
+          My E90 BMW (N55 turbo six) is maintained entirely by me, diagnosis
+          included. The work runs from cooling and fuel system failures through
+          an oil pan gasket and a full transmission service with new seals and
+          mechatronics, jobs most owners hand to a shop because of what has to
+          come apart to reach them.
+        </p>
+        <p style="margin-top:16px">
+          The part that transfers is the diagnostic side. I run ISTA, BMW's
+          dealer-level diagnostic software, over an ENET connection to pull
+          module level fault data and live values from across the car, with
+          BimmerLink and Bimmergeeks ProTool for logging and module coding.
+          Isolating a failing high pressure fuel pump from ignition coils,
+          plugs, or a vacuum leak means reading actual rail pressure under load
+          rather than guessing between symptoms that all look alike.
+        </p>
+        <p style="margin-top:16px">
+          I also flash the engine and transmission control units with MHD and
+          xHP. That is firmware written to embedded modules over the car's
+          diagnostic bus, where a bad flash leaves you with a control unit that
+          no longer talks to anything.
+        </p>
+        <div class="tags">
+          <span>ISTA</span><span>ENET / OBD</span><span>ECU flashing</span>
+          <span>Live datalogging</span><span>Fault isolation</span>
+        </div>
+      </div>
+      <div class="spec">
+        <dl>
+          <div class="row"><dt>Platform</dt><dd>BMW E90 · N55</dd></div>
+          <div class="row"><dt>Diagnostics</dt><dd>ISTA · BimmerLink · ProTool</dd></div>
+          <div class="row"><dt>Flashing</dt><dd>MHD (DME) · xHP (ZF)</dd></div>
+          <div class="row"><dt>Scope</dt><dd>Cooling · fuel · drivetrain · suspension</dd></div>
+          <div class="row"><dt>Status</dt><dd class="status">● Daily driven</dd></div>
         </dl>
       </div>
     </article>
