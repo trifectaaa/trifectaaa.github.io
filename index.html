@@ -392,11 +392,10 @@ a{color:inherit}
     <!-- EDIT: NAME -->
     <h1 class="rise d1">Corbin. <span class="soft">I build things end to end.</span></h1>
     <p class="lede rise d2">
-      That means all of it myself: designing the parts, printing and
-      assembling them, writing the software that runs on them, and
-      maintaining it once it's running. I enjoy the whole process, not
-      just the finished thing.
-    </p>
+          I design the parts, print them, write the software that runs on them, put it
+          all together, and fix it when something breaks. The building is the part I
+          actually like.
+        </p>
     <div class="domainstrip rise d3">
       <span>EMBEDDED</span>
       <span>NETWORKING</span>
@@ -425,12 +424,10 @@ a{color:inherit}
           interactive maps, and working directly with clients.
         </p>
         <p>
-          Making things is the constant. I've always been creating something,
-          whether that was graphic design, drawing, or working on cars, and
-          lately it has gone toward Python on Raspberry Pis, printable
-          enclosures in Blender and FreeCAD, and a homelab running out of a
-          rack I designed and printed myself. The medium keeps changing. The
-          urge to build something doesn't.
+          I've always been making something. For a long time that was graphic design
+          and drawing, plus a lot of hours spent working on cars. Right now it's
+          mostly Python on Raspberry Pis, enclosures in Blender and FreeCAD, and a
+          homelab that runs out of a rack I designed and printed.
         </p>
       </div>
     </div>
@@ -451,36 +448,46 @@ a{color:inherit}
         <h3>Beacon · LFG for co-op games</h3>
         <!-- EDIT: IMAGE — screenshot of the explore page or a group card goes here -->
         <p>
-          A live looking-for-group site for co-op games that ship without
-          matchmaking. Games like Peak are great with four people and unplayable
-          alone, and the existing answer is a scattered pile of Discord LFG
-          channels that are noisy and impossible to filter. Beacon is one place
-          to post "need 2 for Peak, starting now" and actually get them.
+          Beacon is a looking for group platform for finding people to play
+          games with. I kept hitting the same problem: a game I wanted to play,
+          no queue or find-a-squad function in it, and none of my friends online
+          or interested. Peak and Subnautica are good examples. Both are a lot
+          more fun with other people, but there's no way to just hop in and get
+          matched with someone.
         </p>
         <p style="margin-top:16px">
-          Hosts post a group against a live search over 200,000+ titles with real
-          cover art, then approve or deny applicants individually. Groups fill and
-          reopen on their own as players come and go. Discord invites and lobby
-          codes stay hidden until someone is accepted. There's a separate set of
-          tools for streamers running viewer games: link-only groups,
-          first-come auto-fill, random picks, and round rotation.
+          You sign in with Discord and can optionally link Steam. Discord
+          because that's where gamers already are, which also meant I didn't
+          have to host voice chat myself and take on the security problems that
+          come with it. If you link Steam you can import your whole library or
+          just your most played games. The game data comes from Twitch's
+          database, so almost every multiplayer game is in there with its cover
+          art.
         </p>
         <p style="margin-top:16px">
-          The parts I'm most happy with are underneath. Every access rule lives in
-          Postgres row-level security rather than in the front end, so "only the
-          host can approve" and "only accepted players see the invite" hold even
-          if someone talks to the API directly. Approvals lock the group row, so
-          two people accepted in the same instant can't overfill a lobby. Steam
-          linking goes through OpenID and is verified server-side so accounts
-          can't be spoofed. The slur filter runs in the database and normalizes
-          leetspeak, spacing, and repeated letters before it matches, with the
-          term list stored encoded so it isn't readable from the client.
+          An LFG site isn't a new idea, so I focused on the things other ones
+          don't do and on keeping it easy to use. No email signup, no ads, no
+          cluttered UI. Groups can have invite-only links, which I built
+          thinking about Twitch streamers hosting games for their viewers. The
+          Beacon logo pulses whenever a post goes live. That kind of detail is
+          something I notice and appreciate on other sites, so I put it in mine.
+        </p>
+        <p style="margin-top:16px">
+          Every access rule lives in Postgres row-level security instead of the
+          front end, so "only the host can approve" and "only accepted players
+          see the invite" hold even if someone talks to the API directly.
+          Approvals lock the group row so two people accepted at the same moment
+          can't overfill a lobby. Steam linking goes through OpenID and gets
+          verified server-side so accounts can't be spoofed. The slur filter
+          runs in the database and normalizes leetspeak, spacing and repeated
+          letters before it matches, with the term list stored encoded so it
+          isn't readable from the client.
         </p>
         <p class="credit">
-          Built and shipped solo, start to finish: schema design, security
-          policies, OAuth, third-party APIs, real-time, UI, and production
-          deploy. Getting the first users through the door turned out to be the
-          harder half.
+          The site is finished and ready for people to use. The hard part now is
+          advertising, because getting that first group of users is the real
+          hurdle for anything like this. Either way I got a lot out of building
+          it, especially learning Supabase and Vercel.
         </p>
         <a class="plink" href="https://beacon-lfg.com" target="_blank" rel="noopener">
           beacon-lfg.com <span class="arw">→</span>
@@ -527,24 +534,22 @@ a{color:inherit}
           <figcaption>The printed build in service, with the status panel running</figcaption>
         </figure>
         <p>
-          A 6U ten-inch server rack designed from scratch in Blender and printed
-          on a Bambu X2D. It's built around two pairs of Gator Rackworks
-          heavy-duty steel rails, so every module lands on real 10-32 rack
-          threads rather than printed ones. Every 1U module is independent:
-          base and top frame with slot grille, a dual mount carrying a Raspberry
-          Pi 5 and 4B side by side, switch shelf, PDU, 12-port patch panel, fan
-          rack, and blanks. The layout can be rearranged or reprinted a piece at
-          a time.
+          A 6U ten-inch server rack I designed from scratch in Blender and printed on
+          a Bambu X2D. It's built around two pairs of Gator Rackworks steel rails, so
+          everything mounts on real 10-32 threads instead of printed ones. Every 1U
+          module is separate: base and top frame with slot grille, a dual mount
+          holding a Pi 5 and 4B side by side, switch shelf, PDU, 12-port patch panel,
+          fan rack, blanks. You can rearrange the layout or reprint one piece without
+          touching the rest.
         </p>
         <p style="margin-top:16px">
-          Most of the real work was in the constraints. The side panels are two
-          layers, a 3mm inner panel and a 1.6mm outer cover, split into halves so
-          every piece fits a 256mm bed; the cover pieces are mirrored before
-          slicing so the textured PEI face ends up on the outside where it's
-          visible. The slot cutouts in the rear and top panels are spaced to
-          match a 120mm fan's bolt pattern, so additional fans drop straight in
-          without drilling. The Pi 5 mount is raised to clear an NVMe HAT
-          underneath and a tower cooler on top.
+          The side panels are two layers, a 3mm inner panel and a 1.6mm outer cover,
+          split into halves so every piece fits a 256mm bed. The cover pieces get
+          mirrored before slicing so the textured PEI face ends up on the outside
+          where you can see it. Slot cutouts in the rear and top panels are spaced to
+          match a 120mm fan's bolt pattern, so extra fans drop straight in without
+          drilling anything. The Pi 5 mount sits high to clear an NVMe HAT underneath
+          and a tower cooler on top.
         </p>
         <p class="credit">
           Two parts are modified from other creators and credited on the model
@@ -576,20 +581,18 @@ a{color:inherit}
         <span class="idx">03</span>
         <h3>Self-Hosted Network Stack</h3>
         <p>
-          The two Pis in that rack run DNS and remote access for the whole
-          apartment. Pi-hole v6 handles filtering, with Unbound behind it as a
-          local recursive resolver so lookups resolve from the root servers
-          instead of going out to a third-party upstream. Tailscale provides
-          access from outside the LAN, which matters here because the unit is on
-          GPON fiber with no gateway admin access. No port forwarding and no
-          DHCP reservations are available from the router side, so every piece
-          has to work without them.
+          The two Pis in that rack handle DNS and remote access for the whole
+          apartment. Pi-hole v6 does the filtering, with Unbound behind it as a local
+          recursive resolver so lookups go to the root servers instead of a
+          third-party upstream. Tailscale gets me in from outside the LAN, which
+          matters because the unit is on GPON fiber and I have no admin access to the
+          gateway. No port forwarding, no DHCP reservations, so everything has to work
+          without them.
         </p>
         <p style="margin-top:16px">
-          A small Flask service exposes live host metrics over the LAN, managed
-          by systemd so it survives reboots. The Pi 4B polls that endpoint and
-          renders the stats on a 4.3&quot; DSI panel mounted in the rack, with a
-          long-press gesture to switch the display into music mode.
+          A small Flask service exposes live host metrics over the LAN, managed by
+          systemd so it survives reboots. The Pi 4B polls that endpoint and renders
+          the stats on a 4.3&quot; DSI panel mounted in the rack.
         </p>
         <div class="tags">
           <span>Linux</span><span>DNS</span><span>Pi-hole</span>
@@ -631,14 +634,13 @@ a{color:inherit}
           <figcaption>The printed enclosure, with the Pi 4B and touchscreen inside</figcaption>
         </figure>
         <p>
-          A standalone desk device that shows what's playing, scrolls synced
-          lyrics, and renders a live audio visualizer. A Raspberry Pi 4B with a
-          touchscreen runs a pygame UI with invisible touch zones for transport
-          controls. A companion Windows app captures system audio over WASAPI
-          loopback, runs an FFT, and streams the spectrum plus BPM and loudness
-          to the Pi over UDP in real time. Track data comes from the Spotify Web
-          API with rate-limit-aware polling and a fast-poll window for snappy
-          skips.
+          A desk device that shows what's playing, scrolls synced lyrics, and draws a
+          live audio visualizer. A Pi 4B with a touchscreen runs the UI in pygame,
+          with invisible touch zones for transport controls. On the PC side a
+          companion app captures system audio over WASAPI loopback, runs an FFT, and
+          streams the spectrum plus BPM and loudness to the Pi over UDP. Track data
+          comes from the Spotify Web API, polled with rate limits in mind and a faster
+          poll window right after a skip so it keeps up.
         </p>
         <div class="tags">
           <span>Python</span><span>pygame</span><span>Spotify API</span>
@@ -659,14 +661,13 @@ a{color:inherit}
     <article class="project">
       <div>
         <span class="idx">05</span>
-        <h3>Parametric Printed Enclosures</h3>
+        <h3>3D Design &amp; Printing</h3>
         <p>
-          Custom cases and mechanical parts designed for FDM printing:
-          snap-fit assemblies, sliding dovetail joints, and grille panels with
-          clearances tuned for how the plastic actually prints on a Bambu X2D,
-          not just how it looks in CAD. Modeled in Blender and FreeCAD, with a repeatable
-          export workflow and material choices matched to the part (PLA for
-          structure, PETG where it needs to flex).
+          After getting a 3D printer I dove into 3D design, and I absolutely love it.
+          CAD and 3D modeling software like Blender is very challenging when you first
+          start learning it, but it's rewarding. Being able to design a functional
+          part on my computer and then print it as a real working part is a great
+          feeling.
         </p>
         <div class="tags">
           <span>Blender</span><span>FreeCAD</span><span>DFM</span>
@@ -695,26 +696,24 @@ a{color:inherit}
           <figcaption>The E90. All of it diagnosed and repaired in my own garage.</figcaption>
         </figure>
         <p>
-          My E90 BMW (N55 turbo six) is maintained entirely by me, diagnosis
-          included. The work runs from cooling and fuel system failures through
-          an oil pan gasket and a full transmission service with new seals and
-          mechatronics, jobs most owners hand to a shop because of what has to
-          come apart to reach them.
+          I maintain my E90 BMW (N55 turbo six) myself, diagnosis included. Cooling
+          system, fuel system, oil pan gasket, full transmission service with new
+          seals and mechatronics. Those last two are jobs most people hand to a shop
+          because of how much has to come apart to reach them.
         </p>
         <p style="margin-top:16px">
-          The part that transfers is the diagnostic side. I run ISTA, BMW's
-          dealer-level diagnostic software, over an ENET connection to pull
-          module level fault data and live values from across the car, with
-          BimmerLink and Bimmergeeks ProTool for logging and module coding.
-          Isolating a failing high pressure fuel pump from ignition coils,
-          plugs, or a vacuum leak means reading actual rail pressure under load
-          rather than guessing between symptoms that all look alike.
+          I use ISTA, which is BMW's actual dealer software, along with BimmerLink and
+          Bimmergeeks ProTool. Those get me fault codes and live data from every
+          module in the car instead of the generic codes a cheap OBD reader gives you.
+          It matters because a lot of these problems feel identical from the driver's
+          seat. A misfire could be coils, plugs, injectors or the high pressure fuel
+          pump, and the only way to know is to watch fuel pressure while the engine is
+          running.
         </p>
         <p style="margin-top:16px">
-          I also flash the engine and transmission control units with MHD and
-          xHP. That is firmware written to embedded modules over the car's
-          diagnostic bus, where a bad flash leaves you with a control unit that
-          no longer talks to anything.
+          I also flash the engine and transmission control units with MHD and xHP.
+          That's firmware going onto embedded modules over the car's diagnostic bus. A
+          bad flash bricks the unit.
         </p>
         <div class="tags">
           <span>ISTA</span><span>ENET / OBD</span><span>ECU flashing</span>
